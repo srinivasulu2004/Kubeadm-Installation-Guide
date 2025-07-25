@@ -1,0 +1,105 @@
+When **setting up Kubernetes on EC2** (for practice clusters, kubeadm setup, or multi-node clusters), you need to add proper **inbound rules** to your EC2 instances’ security groups to allow traffic between nodes, from your local system, and for services.
+
+Here are **recommended inbound rules**:
+
+---
+
+### ✅ **1. SSH (for your access)**
+
+* **Port:** 22
+* **Protocol:** TCP
+* **Source:** Your IP (best practice) or 0.0.0.0/0 if practicing but not recommended for production.
+
+---
+
+### ✅ **2. Kubernetes API server (for kubectl access)**
+
+* **Port:** 6443
+* **Protocol:** TCP
+* **Source:** Your IP or other worker nodes (if using kubeadm with a master node).
+
+---
+
+### ✅ **3. etcd (only if setting up HA clusters)**
+
+* **Ports:** 2379-2380
+* **Protocol:** TCP
+* **Source:** Cluster internal nodes only.
+
+---
+
+### ✅ **4. Node communication (kubelet API)**
+
+* **Port:** 10250
+* **Protocol:** TCP
+* **Source:** Cluster internal nodes and control plane.
+
+---
+
+### ✅ **5. Flannel or Calico overlay networking (for pod-to-pod communication)**
+
+Depends on CNI plugin used:
+
+* **Flannel VXLAN**
+
+  * **Port:** 8472 (UDP)
+  * **Protocol:** UDP
+  * **Source:** Cluster CIDR or internal node IP range.
+
+* **Calico BGP**
+
+  * **Port:** 179
+  * **Protocol:** TCP
+  * **Source:** Cluster nodes.
+
+---
+
+### ✅ **6. NodePort services**
+
+* **Port Range:** 30000-32767
+* **Protocol:** TCP/UDP
+* **Source:** Your IP or 0.0.0.0/0 (if you want to access NodePort services from anywhere).
+
+---
+
+### ✅ **7. DNS (CoreDNS)**
+
+* **Port:** 53
+* **Protocol:** TCP/UDP
+* **Source:** Cluster nodes or VPC CIDR block.
+
+---
+
+### ✅ **8. ICMP (optional, for ping between nodes)**
+
+* **Type:** All ICMP
+* **Source:** Internal cluster nodes.
+
+---
+
+### 🔑 **Example minimal setup for kubeadm (multi-node)**
+
+| Type     | Protocol | Port Range  | Source                 |
+| -------- | -------- | ----------- | ---------------------- |
+| SSH      | TCP      | 22          | Your IP                |
+| API      | TCP      | 6443        | Worker Nodes + Your IP |
+| etcd     | TCP      | 2379-2380   | Master Nodes           |
+| Kubelet  | TCP      | 10250       | Master + Worker Nodes  |
+| Flannel  | UDP      | 8472        | Master + Worker Nodes  |
+| NodePort | TCP/UDP  | 30000-32767 | 0.0.0.0/0 or your IP   |
+
+---
+
+### 🔷 **Best Practices**
+
+✅ Use **CIDR ranges of VPC** for internal cluster communication rules.
+✅ Avoid opening ports to 0.0.0.0/0 unless needed for external access.
+✅ Restrict SSH to your static IP.
+✅ Adjust based on **CNI plugin** (Flannel, Calico, Weave) requirements.
+
+---
+
+If you want, I can provide:
+
+* **Terraform security group snippet** for these rules.
+* Step-by-step **kubeadm setup plan** with security group explanation for your upcoming practice. Let me know.
