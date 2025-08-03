@@ -1,0 +1,30 @@
+1: Install Helm Chart Using Script
+
+If you like doing everything from scratch then I would suggest you to install the Helm Chart Using script.
+
+Run the following scripts -
+
+commands for install helm ......
+
+
+  ->   curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3            //step1
+next
+ ->   chmod 700 get_helm.sh                                                                                 //step2
+
+next  (...this command for install the helm successdully...)
+
+ ->   ./get_helm.sh                                                                             //step3
+
+
+Now check the helm version by using the below command
+
+    ->   helm version                                                                //step4                                         
+ 
+
+....now you see the out put like....
+
+"     
+version.BuildInfo{Version:"v3.18.4", GitCommit:"d80839cf37d860c8aa9a0503fe463278f26cd5e2", GitTreeState:"clean", GoVersion:"go1.24.4"}
+
+"
+
