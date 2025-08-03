@@ -1,3 +1,6 @@
+NOte :: before install Helm you should setup Kubernetes cluster into your system....(for that consider the README.txt file in this repo )
+
+
 1: Install Helm Chart Using Script
 
 If you like doing everything from scratch then I would suggest you to install the Helm Chart Using script.
