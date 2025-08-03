@@ -27,4 +27,7 @@ Now check the helm version by using the below command
 version.BuildInfo{Version:"v3.18.4", GitCommit:"d80839cf37d860c8aa9a0503fe463278f26cd5e2", GitTreeState:"clean", GoVersion:"go1.24.4"}
 
 "
+ if you want to practice on the helm you can follow the link ...that link contains list of serial commnads for demo ..
 
+         https://jhooq.com/getting-start-with-helm-chart/
+browse this url on browser..
