@@ -18,4 +18,25 @@ step-2 : In the link scroll down the page untill you saw " Installation of Prome
     ->>  to verify    
             []$ ls -lrt
         now you the the file which is untar .
-    -->> now follow the steps from step3 in the above link
+    -->> now follow the steps from step3 in the above link  (https://jhooq.com/prometheous-grafan-setup/)
+
+
+ --->> while we run the command      []$ ./prometheus      /// then it will open temporarly whiloe we using   ctrl + c
+ then it will stop 
+
+--->>> for open permanently use this command  
+
+
+         []$ nohup ./prometheus --config.file=prometheus.yml > prometheus.log 2>&1 &
+
+
+
+ ---... explantion
+              nohup: runs the command immune to hangups (terminal exit).
+
+             > prometheus.log 2>&1: logs output to prometheus.log.
+
+            &: puts the process in the background.
+
+             ✅ Prometheus will keep running even after you close the terminal.
+
