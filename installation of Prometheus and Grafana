@@ -1,0 +1,21 @@
+https://jhooq.com/prometheous-grafan-setup/
+Follow the above link to install prometheus and grafan
+step-1 : first of all we should create a directoty and go to that 
+  []$ sudo mkdir promehteus
+  []& cd prometheus
+step-2 : In the link scroll down the page untill you saw " Installation of Prometheus"
+   ->  there is a first option that provides a link to downloade prometheus " Download Page of Prometheus "    
+       so now click on that .  it will open the download  page then scroll down there are sime link choose "prometheus-3.5.0.linux-amd64.tar.gz       	linux	      amd64	    115.52 MiB	     e811827af26d822afb09a4f28314f61b618b12cff5369835a67f674d8b46f39a" 
+  - > now click on that copynthe url link
+  ->    [:prometheus]&  wget https://github.com/prometheus/prometheus/releases/download/v3.5.0/prometheus-3.5.0.linux-amd64.tar.gz
+        ->   it should download tyhe prometheus binary on your machine(LOCAL/VM)
+  - > Extract the file by using this command
+      []$ ls -lrt
+      []$ tar xvfz prometheus-x.xx.x.linux-amd64.tar.gz
+                                   ||
+                    this name we should give as the file which we download
+  
+    ->>  to verify    
+            []$ ls -lrt
+        now you the the file which is untar .
+    -->> now follow the steps from step3 in the above link
